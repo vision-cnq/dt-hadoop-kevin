@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Partitioner;
   
 public class AreaPartitioner extends Partitioner<Text, FlowBean> {  
   
-    private static HashMap<String, Integer> areaMap = new HashMap<>();  
+    private static HashMap<String, Integer> areaMap = new HashMap<String, Integer>();
   
     static {  
         areaMap.put("135", 0);  

@@ -26,7 +26,7 @@ public class WordCount {
 
         private final static IntWritable one = new IntWritable(1);
         private Text word = new Text();
-
+        @Override
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString());
             while (itr.hasMoreTokens()) {
@@ -39,6 +39,7 @@ public class WordCount {
     public static class IntSumReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
         private IntWritable result = new IntWritable();
 
+        @Override
         public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
             int sum = 0;
             for (IntWritable val : values) {
@@ -60,8 +61,8 @@ public class WordCount {
         job.setReducerClass(IntSumReducer.class); // 设置reduce类
         job.setOutputKeyClass(Text.class); // 设置输出类型key
         job.setOutputValueClass(IntWritable.class); // 设置输出类型value
-        FileInputFormat.addInputPath(job, new Path("hdfs://192.168.171.100:9000/test/input_01/")); // 设置输入文件
-        FileOutputFormat.setOutputPath(job, new Path("hdfs://192.168.171.100:9000/test/output_01")); // 设置输出文件
+        FileInputFormat.addInputPath(job, new Path("hdfs://192.168.171.100:9000/test/word.txt")); // 设置输入文件
+        FileOutputFormat.setOutputPath(job, new Path("hdfs://192.168.171.100:9000/test/output_02")); // 设置输出文件
         System.exit(job.waitForCompletion(true) ? 0 : 1); // 等待完成退出
     }
 }
