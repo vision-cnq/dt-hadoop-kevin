@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kevin.dt</groupId>
-    <artifactId>DTHadoop</artifactId>
+    <artifactId>dt-hadoop-kevin</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
